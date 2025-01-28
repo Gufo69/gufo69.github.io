@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Marketing</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header .affiliate-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        header .affiliate-btn:hover {
+            background-color: #FFD700; /* Gold color */
+        }
+
+        .sort-menu {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .sort-menu select {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(20% - 20px); /* 5 items per row */
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        .product-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .product-item h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .product-item p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .category {
+            font-size: 14px;
+            color: red !important; /* Red color for category */
+            margin-bottom: 10px;
+        }
+
+        .buy-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Query for smaller screens */
+        @media (max-width: 1200px) {
+            .product-item {
+                flex: 1 1 calc(25% - 20px); /* 4 items per row on medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-item {
+                flex: 1 1 calc(33.33% - 20px); /* 3 items per row on small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                flex: 1 1 100%; /* 1 item per row on extra small screens */
+            }
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Hover effect for all buttons */
+        a:hover, .buy-btn:hover, .affiliate-btn:hover {
+            background-color: #FFD700 !important; /* Gold color */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Affiliate Marketing Site</h1>
+    <a href="YOUR_AFFILIATE_PAGE_LINK" class="affiliate-btn" target="_blank">Visit Affiliate Page</a>
+</header>
+
+<!-- Sort Menu -->
+<div class="sort-menu">
+    <label for="sort">Sort by: </label>
+    <select id="sort" name="sort" onchange="sortProducts()">
+        <option value="price-low-high">Price: Low to High</option>
+        <option value="price-high-low">Price: High to Low</option>
+        <option value="newest">Newest</option>
+        <option value="best-selling">Best Selling</option>
+    </select>
+</div>
+
+<section class="product-list" id="product-list">
+    <!-- Product 1 -->
+    <div class="product-item" data-price="999" data-category="AMAZON">
+        <img src="https://img.kwcdn.com/product/fancy/fe2055ba-f0e7-4e1d-89ad-06ee4b458dc2.jpg?imageView2/2/w/800/q/70/format/webp" alt="TV VWX">
+        <h3>TV VWX</h3>
+        <p>Price: €999</p>
+        <p class="category">Category: AMAZON</p>
+        <a href="YOUR_AFFILIATE_LINK" class="buy-btn" target="_blank">Buy Now</a>
+    </div>
+    <!-- Product 2 -->
+    <div class="product-item" data-price="799" data-category="EBAY">
+        <img src="https://img.kwcdn.com/product/fancy/fe2055ba-f0e7-4e1d-89ad-06ee4b458dc2.jpg?imageView2/2/w/800/q/70/format/webp" alt="Smartphone ABC">
+        <h3>Smartphone ABC</h3>
+        <p>Price: €799</p>
+        <p class="category">Category: EBAY</p>
+        <a href="YOUR_AFFILIATE_LINK" class="buy-btn" target="_blank">Buy Now</a>
+    </div>
+    <!-- Product 3 -->
+    <div class="product-item" data-price="1199" data-category="TEMU">
+        <img src="https://img.kwcdn.com/product/fancy/fe2055ba-f0e7-4e1d-89ad-06ee4b458dc2.jpg?imageView2/2/w/800/q/70/format/webp" alt="Laptop XYZ">
+        <h3>Laptop XYZ</h3>
+        <p>Price: €1,199</p>
+        <p class="category">Category: TEMU</p>
+        <a href="YOUR_AFFILIATE_LINK" class="buy-btn" target="_blank">Buy Now</a>
+    </div>
+    <!-- Product 4 -->
+    <div class="product-item" data-price="199" data-category="AMAZON">
+        <img src="https://img.kwcdn.com/product/fancy/fe2055ba-f0e7-4e1d-89ad-06ee4b458dc2.jpg?imageView2/2/w/800/q/70/format/webp" alt="Headphones DEF">
+        <h3>Headphones DEF</h3>
+        <p>Price: €199</p>
+        <p class="category">Category: AMAZON</p>
+        <a href="YOUR_AFFILIATE_LINK" class="buy-btn" target="_blank">Buy Now</a>
+    </div>
+    <!-- Product 5 -->
+    <div class="product-item" data-price="149" data-category="EBAY">
+        <img src="https://img.kwcdn.com/product/fancy/fe2055ba-f0e7-4e1d-89ad-06ee4b458dc2.jpg?imageView2/2/w/800/q/70/format/webp" alt="Smartwatch GHI">
+        <h3>Smartwatch GHI</h3>
+        <p>Price: €149</p>
+        <p class="category">Category: EBAY</p>
+        <a href="YOUR_AFFILIATE_LINK" class="buy-btn" target="_blank">Buy Now</a>
+    </div>
+    <!-- Add more products here -->
+</section>
+
+<div class="footer">
+    <p>&copy; 2025 Affiliate Marketing. All Rights Reserved.</p>
+</div>
+
+<script>
+    function sortProducts() {
+        const sortValue = document.getElementById('sort').value;
+        const products = Array.from(document.querySelectorAll('.product-item'));
+        let sortedProducts = [];
+
+        if (sortValue === 'price-low-high') {
+            sortedProducts = products.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
+        } else if (sortValue === 'price-high-low') {
+            sortedProducts = products.sort((a, b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
+        } else if (sortValue === 'newest') {
+            sortedProducts = products;
+        } else if (sortValue === 'best-selling') {
+            sortedProducts = products;
+        }
+
+        const productList = document.getElementById('product-list');
+        productList.innerHTML = '';
+        sortedProducts.forEach(product => {
+            productList.appendChild(product);
+        });
+    }
+
+    window.addEventListener('load', () => {
+        const productItems = document.querySelectorAll('.product-item');
+        productItems.forEach(item => {
+            item.style.animation = 'fadeInUp 0.5s forwards';
+        });
+    });
+</script>
+
+</body>
+</html>
