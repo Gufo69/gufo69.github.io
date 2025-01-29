@@ -162,6 +162,65 @@
     <h1>Affiliate Marketing Site</h1>
     <a href="https://temu.to/k/uis8wb4v32f" class="affiliate-btn" target="_blank">Visit Affiliate Page</a>
 </header>
+<style>
+    .search-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .search-icon {
+        cursor: pointer;
+        font-size: 20px;
+        background: none;
+        border: none;
+        color: #555;
+        padding: 8px;
+        border-radius: 50%;
+        transition: background 0.3s;
+    }
+
+    .search-icon:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .search-box {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 180px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: white;
+        display: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 5px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .search-box.active {
+        display: block;
+    }
+</style>
+
+<div class="search-container">
+    <button class="search-icon" onclick="toggleSearch()">🔍</button>
+    <div class="search-box" id="searchBox">
+        <input type="text" placeholder="ძიება...">
+    </div>
+</div>
+
+<script>
+    function toggleSearch() {
+        document.getElementById('searchBox').classList.toggle('active');
+    }
+</script>
 
     <!-- საძიებო ველი -->
 <div class="search-container">
