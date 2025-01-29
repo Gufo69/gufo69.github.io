@@ -163,6 +163,53 @@
     <a href="https://temu.to/k/uis8wb4v32f" class="affiliate-btn" target="_blank">Visit Affiliate Page</a>
 </header>
 
+    <!-- საძიებო ველი -->
+<div class="search-container">
+    <input type="text" id="search" placeholder="🔍 მოძებნე პროდუქტი..." onkeyup="filterProducts()">
+</div>
+
+<style>
+    .search-container {
+        text-align: center;
+        margin: 20px auto;
+        max-width: 400px;
+    }
+
+    #search {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 25px;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #search:focus {
+        border-color: #007bff;
+        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+    }
+</style>
+
+<script>
+    function filterProducts() {
+        const searchValue = document.getElementById('search').value.toLowerCase().trim();
+        const products = document.querySelectorAll('.product-item');
+
+        products.forEach(product => {
+            const name = product.querySelector('h3').textContent.toLowerCase();
+            const category = product.querySelector('.category').textContent.toLowerCase();
+
+            if (name.includes(searchValue) || category.includes(searchValue)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+</script>
+
 <!-- Sort Menu -->
 <div class="sort-menu">
     <label for="sort">Sort by: </label>
